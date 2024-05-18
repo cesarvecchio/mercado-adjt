@@ -92,7 +92,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -263,7 +263,7 @@
       <workItem from="1715903416222" duration="4258000" />
       <workItem from="1715987846867" duration="9222000" />
       <workItem from="1716045420173" duration="7268000" />
-      <workItem from="1716057107851" duration="12714000" />
+      <workItem from="1716057107851" duration="13045000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando as execeptions">
       <option name="closed" value="true" />
