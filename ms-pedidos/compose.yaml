@@ -1,0 +1,13 @@
+version: '3'
+
+networks:
+  pedido-network:
+
+services:
+  mongodb-restaurante:
+    image: "mongo"
+    container_name: "mongodb-pedido"
+    ports:
+      - "27017:27017"
+    networks:
+      - pedido-network
