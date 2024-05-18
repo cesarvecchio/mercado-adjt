@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "id",
+    "nome",
+    "cpf",
+    "telefone",
+    "email",
+    "endereco"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "default": 0,
+      "title": "The id Schema",
+      "examples": [
+        1
+      ]
+    },
+    "nome": {
+      "type": "string",
+      "default": "",
+      "title": "The nome Schema",
+      "examples": [
+        "Guilherme Matos de Carvalho"
+      ]
+    },
+    "cpf": {
+      "type": "string",
+      "default": "",
+      "title": "The cpf Schema",
+      "examples": [
+        "12345678910"
+      ]
+    },
+    "telefone": {
+      "type": "string",
+      "default": "",
+      "title": "The telefone Schema",
+      "examples": [
+        "11923465432"
+      ]
+    },
+    "email": {
+      "type": "string",
+      "default": "",
+      "title": "The email Schema",
+      "examples": [
+        "8Xa5I@example.com"
+      ]
+    },
+    "endereco": {
+      "type": "object",
+      "default": {},
+      "title": "The endereco Schema",
+      "required": [
+        "cep",
+        "logradouro",
+        "complemento",
+        "bairro",
+        "cidade",
+        "uf",
+        "numero",
+        "latitude",
+        "longitude"
+      ],
+      "properties": {
+        "cep": {
+          "type": "string",
+          "default": "",
+          "title": "The cep Schema",
+          "examples": [
+            "147852369"
+          ]
+        },
+        "logradouro": {
+          "type": "string",
+          "default": "",
+          "title": "The logradouro Schema",
+          "examples": [
+            "Rua A"
+          ]
+        },
+        "complemento": {
+          "type": "string",
+          "default": "",
+          "title": "The complemento Schema",
+          "examples": [
+            "Casa"
+          ]
+        },
+        "bairro": {
+          "type": "string",
+          "default": "",
+          "title": "The bairro Schema",
+          "examples": [
+            "Centro"
+          ]
+        },
+        "cidade": {
+          "type": "string",
+          "default": "",
+          "title": "The cidade Schema",
+          "examples": [
+            "São Paulo"
+          ]
+        },
+        "uf": {
+          "type": "string",
+          "default": "",
+          "title": "The uf Schema",
+          "examples": [
+            "SP"
+          ]
+        },
+        "numero": {
+          "type": "string",
+          "default": "",
+          "title": "The numero Schema",
+          "examples": [
+            "189"
+          ]
+        },
+        "latitude": {
+          "type": "number",
+          "default": 0.0,
+          "title": "The latitude Schema",
+          "examples": [
+            1111.54551
+          ]
+        },
+        "longitude": {
+          "type": "number",
+          "default": 0.0,
+          "title": "The longitude Schema",
+          "examples": [
+            111122.226
+          ]
+        }
+      },
+      "examples": [{
+        "cep": "147852369",
+        "logradouro": "Rua A",
+        "complemento": "Casa",
+        "bairro": "Centro",
+        "cidade": "São Paulo",
+        "uf": "SP",
+        "numero": "189",
+        "latitude": 1111.54551,
+        "longitude": 111122.226
+      }]
+    }
+  },
+  "examples": [{
+    "id": 1,
+    "nome": "Guilherme Matos de Carvalho",
+    "cpf": "12345678910",
+    "telefone": "11923465432",
+    "email": "8Xa5I@example.com",
+    "endereco": {
+      "cep": "147852369",
+      "logradouro": "Rua A",
+      "complemento": "Casa",
+      "bairro": "Centro",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "numero": "189",
+      "latitude": 1111.54551,
+      "longitude": 111122.226
+    }
+  }]
+}

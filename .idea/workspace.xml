@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a102e76f-7bbc-4d85-a094-ec574dd41b6f" name="Changes" comment="Finalizando o projeto adicionar o docker compose corretamente" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Gui65&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="a99b1d54-4e4e-43eb-86f5-2a199d65d995" />
+        <option name="url" value="https://github.com/Gui65/ms-cadastro-clientes.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/3.2.5/d5432b907692b7f8e3991f4b57d962b35a5da418/spring-data-commons-3.2.5-sources.jar!/org/springframework/data/repository/CrudRepository.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2g6uxsMfz4vLzlP1qBHL0v5KScZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "android.gradle.sync.needed": "true",
+    "git-widget-placeholder": "<unknown>",
+    "last_opened_file_path": "C:/Users/Microsoft/Documents/PROJETOS/mscadastrocliente/src/test/resources/schemas",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="br.com.cadastrocliente.mscadastrocliente.domain.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Microsoft\Documents\PROJETOS\mscadastrocliente\src\test\resources\schemas" />
+      <recent name="C:\Users\Microsoft\Documents\PROJETOS\mscadastrocliente\src\main\java\br\com\cadastrocliente\mscadastrocliente\application\controller\exception" />
+      <recent name="C:\Users\Microsoft\Documents\PROJETOS\mscadastrocliente\src\main\java\br\com\cadastrocliente\mscadastrocliente\infra" />
+      <recent name="C:\Users\Microsoft\Documents\PROJETOS\mscadastrocliente\src\main\java\br\com\cadastrocliente\mscadastrocliente" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.com.cadastrocliente.mscadastrocliente.bdd" />
+      <recent name="br.com.cadastrocliente.mscadastrocliente.application.controller.exception" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MscadastroclienteApplication">
+    <configuration name="Feature: cliente" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/cliente.feature" />
+      <option name="GLUE" value="br.com.cadastrocliente.mscadastrocliente.bdd" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="mscadastrocliente.test" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="Feature: cliente" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CadastrarCliente.deveCadastrarCliente" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;br.com.cadastrocliente.mscadastrocliente.domain.service.ClienteServiceTest$CadastrarCliente.deveCadastrarCliente&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ClienteControllerIT" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;br.com.cadastrocliente.mscadastrocliente.application.controller.ClienteControllerIT&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ClienteControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;br.com.cadastrocliente.mscadastrocliente.application.controller.ClienteControllerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="ClienteServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;br.com.cadastrocliente.mscadastrocliente.domain.service.ClienteServiceTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MscadastroclienteApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="mscadastrocliente.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.com.cadastrocliente.mscadastrocliente.MscadastroclienteApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cucumber Java.Feature: cliente" />
+        <item itemvalue="Gradle.ClienteControllerTest" />
+        <item itemvalue="Gradle.ClienteControllerIT" />
+        <item itemvalue="Gradle.ClienteServiceTest" />
+        <item itemvalue="Gradle.CadastrarCliente.deveCadastrarCliente" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a102e76f-7bbc-4d85-a094-ec574dd41b6f" name="Changes" comment="" />
+      <created>1715030671111</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715030671111</updated>
+      <workItem from="1715030672463" duration="7747000" />
+      <workItem from="1715205284068" duration="6686000" />
+      <workItem from="1715349167356" duration="22584000" />
+      <workItem from="1715638053434" duration="9971000" />
+      <workItem from="1715723988472" duration="3661000" />
+      <workItem from="1715728219896" duration="5401000" />
+      <workItem from="1715809541176" duration="1538000" />
+      <workItem from="1715903416222" duration="4258000" />
+      <workItem from="1715987846867" duration="9222000" />
+      <workItem from="1716045420173" duration="7268000" />
+      <workItem from="1716057107851" duration="12714000" />
+    </task>
+    <task id="LOCAL-00001" summary="Adicionando as execeptions">
+      <option name="closed" value="true" />
+      <created>1715038166517</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715038166517</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Iniciando as classes de testes">
+      <option name="closed" value="true" />
+      <created>1715211375504</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715211375504</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Finalizando testes unitários">
+      <option name="closed" value="true" />
+      <created>1715393716387</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715393716387</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Finalizando testes integrados de buscar ClienteService">
+      <option name="closed" value="true" />
+      <created>1715642928031</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715642928031</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Finalizando testes integrados de ClienteService">
+      <option name="closed" value="true" />
+      <created>1715647451201</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715647451201</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Alterando a versão do JUnit e ajustando a classe de testes de forma correta">
+      <option name="closed" value="true" />
+      <created>1715731777007</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715731777007</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Iniciando classe ClienteControllerIT">
+      <option name="closed" value="true" />
+      <created>1715733619128</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715733619128</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Iniciando testes BDD">
+      <option name="closed" value="true" />
+      <created>1715907673643</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715907673643</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Finalizando testes BDD">
+      <option name="closed" value="true" />
+      <created>1715991799639</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715991799639</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Finalizando o projeto adicionar o docker compose corretamente">
+      <option name="closed" value="true" />
+      <created>1716069654470</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716069654470</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adicionando as execeptions" />
+    <MESSAGE value="Iniciando as classes de testes" />
+    <MESSAGE value="Finalizando testes unitários" />
+    <MESSAGE value="Finalizando testes integrados de buscar ClienteService" />
+    <MESSAGE value="Finalizando testes integrados de ClienteService" />
+    <MESSAGE value="Alterando a versão do JUnit e ajustando a classe de testes de forma correta" />
+    <MESSAGE value="Iniciando classe ClienteControllerIT" />
+    <MESSAGE value="Iniciando testes BDD" />
+    <MESSAGE value="Finalizando testes BDD" />
+    <MESSAGE value="Finalizando o projeto adicionar o docker compose corretamente" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalizando o projeto adicionar o docker compose corretamente" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/br/com/cadastrocliente/mscadastrocliente/domain/service/ClienteService.java</url>
+          <line>117</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

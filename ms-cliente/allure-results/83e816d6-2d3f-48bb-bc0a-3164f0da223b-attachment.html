@@ -1,0 +1,58 @@
+<div>POST to http://localhost:59244/cliente/cadastrar</div>
+
+<h4>Body</h4>
+<div>
+    <pre class="preformated-text">
+{
+    &quot;id&quot;: 1,
+    &quot;nome&quot;: &quot;Fulano de tal&quot;,
+    &quot;email&quot;: &quot;fulano@example.com&quot;,
+    &quot;senha&quot;: &quot;Sdsadwd21321@#$&quot;,
+    &quot;telefone&quot;: &quot;11987654321&quot;,
+    &quot;cpf&quot;: &quot;666555481217&quot;,
+    &quot;rg&quot;: &quot;369258147&quot;,
+    &quot;endereco&quot;: {
+        &quot;cep&quot;: &quot;147852369&quot;,
+        &quot;logradouro&quot;: &quot;Rua A&quot;,
+        &quot;complemento&quot;: &quot;Casa&quot;,
+        &quot;bairro&quot;: &quot;Centro&quot;,
+        &quot;cidade&quot;: &quot;São Paulo&quot;,
+        &quot;uf&quot;: &quot;SP&quot;,
+        &quot;numero&quot;: &quot;189&quot;,
+        &quot;latitude&quot;: 1111.54551,
+        &quot;longitude&quot;: 111122.226
+    }
+}    </pre>
+</div>
+
+<h4>Headers</h4>
+<div>
+        <div>Accept: */*</div>
+        <div>Content-Type: application/json</div>
+</div>
+
+
+
+<h4>Curl</h4>
+<div>
+curl -v -X POST &#39;http://localhost:59244/cliente/cadastrar&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;id&quot;: 1,
+    &quot;nome&quot;: &quot;Fulano de tal&quot;,
+    &quot;email&quot;: &quot;fulano@example.com&quot;,
+    &quot;senha&quot;: &quot;Sdsadwd21321@#$&quot;,
+    &quot;telefone&quot;: &quot;11987654321&quot;,
+    &quot;cpf&quot;: &quot;666555481217&quot;,
+    &quot;rg&quot;: &quot;369258147&quot;,
+    &quot;endereco&quot;: {
+        &quot;cep&quot;: &quot;147852369&quot;,
+        &quot;logradouro&quot;: &quot;Rua A&quot;,
+        &quot;complemento&quot;: &quot;Casa&quot;,
+        &quot;bairro&quot;: &quot;Centro&quot;,
+        &quot;cidade&quot;: &quot;São Paulo&quot;,
+        &quot;uf&quot;: &quot;SP&quot;,
+        &quot;numero&quot;: &quot;189&quot;,
+        &quot;latitude&quot;: 1111.54551,
+        &quot;longitude&quot;: 111122.226
+    }
+}&#39;
+</div>

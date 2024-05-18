@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "default": {},
+  "title": "Root Schema",
+  "required": [
+    "timestamp",
+    "status",
+    "error",
+    "message",
+    "path"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "default": "",
+      "title": "The timestamp Schema",
+      "examples": [
+        "2024-05-15T00:37:41.821821900Z"
+      ]
+    },
+    "status": {
+      "type": "integer",
+      "default": 0,
+      "title": "The status Schema",
+      "examples": [
+        404
+      ]
+    },
+    "error": {
+      "type": "string",
+      "default": "",
+      "title": "The error Schema",
+      "examples": [
+        "Nao Encontrado Exception"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "default": "",
+      "title": "The message Schema",
+      "examples": [
+        "Cliente com o id '6' não encontrado"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "default": "",
+      "title": "The path Schema",
+      "examples": [
+        "/cliente/buscar/6"
+      ]
+    }
+  },
+  "examples": [{
+    "timestamp": "2024-05-15T00:37:41.821821900Z",
+    "status": 404,
+    "error": "Nao Encontrado Exception",
+    "message": "Cliente com o id '6' não encontrado",
+    "path": "/cliente/buscar/6"
+  }]
+}
