@@ -1,0 +1,33 @@
+version: '3'
+
+networks:
+  mercado-network:
+
+services:
+  banco-logistica-entrega:
+    image: postgres:14-alpine
+    container_name: "banco-logistica-entrega"
+    environment:
+      - POSTGRES_PASSWORD=""
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
+    networks:
+      - mercado-network
+
+  ms-logistica-entrega:
+    image: "backend:dev"
+    build:
+      context: .
+    container_name: "ms-logistica-entrega"
+    depends_on:
+      - banco-logistica-entrega
+    ports:
+      - "8084:8084"
+      - "587:587"
+    environment:
+      POSTGRES_URI: jdbc:postgresql://banco-logistica-entrega:5432/mercado
+      MAIL_USERNAME: a99c7b45d34625
+      MAIL_PASSWORD: 3122b0df81ef28
+    networks:
+      - mercado-network
