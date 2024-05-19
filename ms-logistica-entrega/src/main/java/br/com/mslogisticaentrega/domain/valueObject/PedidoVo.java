@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PedidoVo {
     private String idPedido;
-    private Integer idCliente;
+    private Long idCliente;
     private List<ProdutoVo> produtos;
     private BigDecimal valorTotal;
     private PagamentoEnum formaPagamento;

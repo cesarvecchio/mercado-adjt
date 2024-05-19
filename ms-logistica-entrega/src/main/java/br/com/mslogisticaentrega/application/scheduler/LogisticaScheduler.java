@@ -35,12 +35,13 @@ public class LogisticaScheduler {
     }
 
 //    @Scheduled(initialDelay = 1000, fixedDelay = 300000)
+    @Scheduled(fixedDelay = 10000)
     public void processarLogistica() {
         try {
             logger.info("==== Processo de Logistica Iniciado =====");
 
             List<PedidoClienteVo> pedidoClienteList = new ArrayList<>();
-            List<PedidoVo> pedidoList = pedidoService.buscarPedidoPago();
+            List<PedidoVo> pedidoList = pedidoService.buscarPedidosPagos();
 
             vincularPedidoCliente(pedidoClienteList, pedidoList);
 
@@ -71,7 +72,7 @@ public class LogisticaScheduler {
         logger.info("Iniciando Vinculacao de Pedidos aos Clientes");
 
         for(PedidoVo pedido : pedidoList) {
-            ClienteVo cliente = clienteService.obterClientePorId(Long.valueOf(pedido.getIdCliente()));
+            ClienteVo cliente = clienteService.obterClientePorId(pedido.getIdCliente());
 
             pedidoClienteList.add(new PedidoClienteVo(pedido, cliente));
         }

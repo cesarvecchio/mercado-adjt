@@ -68,11 +68,10 @@ public class RelatorioService {
 
         for (ProdutoVo produtoVo : produtoVoList) {
             relatorioPrdutos.append(String.format("""
-                    Descricao: %s     Valor: R$%.2f     Marca: %s
+                    Descricao: %s     Valor: R$%.2f
                     """,
                     produtoVo.getDescricao(),
-                    produtoVo.getValor(),
-                    produtoVo.getMarca()));
+                    produtoVo.getValor()));
         }
 
         return relatorioPrdutos.toString();

@@ -1,22 +1,25 @@
 package br.com.mslogisticaentrega.infra.client;
 
+import br.com.mslogisticaentrega.domain.enums.StatusEnum;
+import br.com.mslogisticaentrega.domain.valueObject.AtualizarStatusLoteRequestVo;
 import br.com.mslogisticaentrega.domain.valueObject.PedidoVo;
 import br.com.mslogisticaentrega.infra.config.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "ms-pedidos", configuration = FeignConfig.class)
+@FeignClient(name = "ms-pedidos", configuration = FeignConfig.class, path = "/pedidos")
 public interface PedidoClient {
-    @GetMapping
-    List<PedidoVo> buscarPedidoPago();
+    @GetMapping("/pagos")
+    List<PedidoVo> buscarPedidosPagos();
 
-    @PutMapping("/{idPedidoList}")
-    void atualizarPedidosAguardandoEntrega(@PathVariable List<String> idPedidoList);
+    @GetMapping("/{idPedido}")
+    PedidoVo buscarPedido(@PathVariable String idPedido);
 
-    @PutMapping("/{idPedido}")
-    void atualizarPedidoEntregue(@PathVariable String idPedido);
+    @PutMapping("/atualizar-status-em-lote")
+    void atualizarPedidosAguardandoEntrega(@RequestBody AtualizarStatusLoteRequestVo atualizarStatusLoteRequestDTO);
+
+    @PutMapping("/atualizar-status/{idPedido}")
+    void atualizarPedidoEntregue(@PathVariable String idPedido, @RequestParam StatusEnum status);
 }

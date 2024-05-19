@@ -1,0 +1,45 @@
+version: '3.9'
+
+networks:
+  mercado-network:
+
+services:
+  banco-mercado:
+    image: postgres:14-alpine
+    container_name: "banco-mercado"
+    environment:
+      - POSTGRES_PASSWORD=""
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
+    networks:
+      - mercado-network
+
+  mongodb-restaurante:
+    image: "mongo"
+    container_name: "mongodb-pedido"
+    ports:
+      - "27017:27017"
+    networks:
+      - mercado-network
+
+
+
+      
+
+  # ms-logistica-entrega:
+  #   image: "backend:dev"
+  #   build:
+  #     context: .
+  #   container_name: "ms-logistica-entrega"
+  #   depends_on:
+  #     - banco-mercado
+  #   ports:
+  #     - "8084:8084"
+  #     - "587:587"
+  #   environment:
+  #     POSTGRES_URI: banco-mercado
+  #     MS_PEDIDOS_URI: localhost
+  #     MS_CLIENTE_URI: localhost
+  #   networks:
+  #     - mercado-network

@@ -1,6 +1,7 @@
 package br.com.mslogisticaentrega.domain.service;
 
 import br.com.mslogisticaentrega.domain.enums.StatusEnum;
+import br.com.mslogisticaentrega.domain.valueObject.AtualizarStatusLoteRequestVo;
 import br.com.mslogisticaentrega.domain.valueObject.ClienteVo;
 import br.com.mslogisticaentrega.domain.valueObject.Email;
 import br.com.mslogisticaentrega.domain.valueObject.PedidoVo;
@@ -21,15 +22,15 @@ public class PedidoService {
     private final ClienteService clienteService;
     private final EmailService emailService;
 
-    public PedidoService(@Qualifier("pedidoClientMock") PedidoClient pedidoClient, ClienteService clienteService, EmailService emailService) {
+    public PedidoService(PedidoClient pedidoClient, ClienteService clienteService, EmailService emailService) {
         this.pedidoClient = pedidoClient;
         this.clienteService = clienteService;
         this.emailService = emailService;
     }
 
-    public List<PedidoVo> buscarPedidoPago() {
+    public List<PedidoVo> buscarPedidosPagos() {
         logger.info("Buscando Pedido com status:[{}]", StatusEnum.PAGO);
-        List<PedidoVo> pedidoVoList = pedidoClient.buscarPedidoPago();
+        List<PedidoVo> pedidoVoList = pedidoClient.buscarPedidosPagos();
 
         if(pedidoVoList.isEmpty()){
             throw new NaoEncontradoException(
@@ -40,13 +41,15 @@ public class PedidoService {
     }
 
     public void atualizarPedidosAguardandoEntrega(List<String> idPedidoLista){
-        pedidoClient.atualizarPedidosAguardandoEntrega(idPedidoLista);
+        pedidoClient.atualizarPedidosAguardandoEntrega(new AtualizarStatusLoteRequestVo(idPedidoLista, StatusEnum.AGUARDANDO_ENTREGA));
     }
 
     public void atualizarPedidoEntregue(String idPedido){
-        pedidoClient.atualizarPedidoEntregue(idPedido);
+        pedidoClient.atualizarPedidoEntregue(idPedido, StatusEnum.ENTREGUE);
 
-        ClienteVo clienteVo = clienteService.obterClientePorId(1L);
+        PedidoVo pedidoVo = pedidoClient.buscarPedido(idPedido);
+
+        ClienteVo clienteVo = clienteService.obterClientePorId(pedidoVo.getIdCliente());
 
         Email email = new Email(clienteVo.getEmail(), "Pedido Entregue", "Ah entrega do seu pedido foi realizada com sucesso!");
 

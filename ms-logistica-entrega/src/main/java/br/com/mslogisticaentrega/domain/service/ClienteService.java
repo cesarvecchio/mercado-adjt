@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class ClienteService {
     private final ClienteClient clienteClient;
 
-    public ClienteService(@Qualifier("clienteClientMock") ClienteClient clienteClient) {
+    public ClienteService(ClienteClient clienteClient) {
         this.clienteClient = clienteClient;
     }
 

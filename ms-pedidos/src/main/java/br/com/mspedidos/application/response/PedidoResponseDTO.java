@@ -9,6 +9,7 @@ import java.util.List;
 
 public record PedidoResponseDTO(
         String idPedido,
+        Long idCliente,
         List<Produto> produtos,
         BigDecimal valorTotal,
         PagamentoEnum formaPagamento,

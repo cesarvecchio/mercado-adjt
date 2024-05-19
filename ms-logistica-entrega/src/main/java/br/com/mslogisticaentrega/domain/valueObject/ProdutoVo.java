@@ -13,5 +13,4 @@ public class ProdutoVo {
     private Integer idProduto;
     private String descricao;
     private BigDecimal valor;
-    private String marca;
 }

@@ -148,6 +148,7 @@ public class PedidoService {
     public PedidoResponseDTO toResponseDTO(Pedido pedido) {
         return new PedidoResponseDTO(
                 pedido.getIdPedido(),
+                pedido.getIdCliente(),
                 pedido.getProdutos(),
                 pedido.getValorTotal(),
                 pedido.getFormaPagamento(),

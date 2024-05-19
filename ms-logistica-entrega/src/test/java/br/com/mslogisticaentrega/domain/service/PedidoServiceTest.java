@@ -2,10 +2,7 @@ package br.com.mslogisticaentrega.domain.service;
 
 import br.com.mslogisticaentrega.domain.enums.PagamentoEnum;
 import br.com.mslogisticaentrega.domain.enums.StatusEnum;
-import br.com.mslogisticaentrega.domain.valueObject.ClienteVo;
-import br.com.mslogisticaentrega.domain.valueObject.Email;
-import br.com.mslogisticaentrega.domain.valueObject.PedidoVo;
-import br.com.mslogisticaentrega.domain.valueObject.ProdutoVo;
+import br.com.mslogisticaentrega.domain.valueObject.*;
 import br.com.mslogisticaentrega.infra.client.PedidoClient;
 import br.com.mslogisticaentrega.infra.exceptions.NaoEncontradoException;
 import org.junit.jupiter.api.AfterEach;
@@ -58,25 +55,25 @@ public class PedidoServiceTest {
                     BigDecimal.ONE, PagamentoEnum.PIX, StatusEnum.PAGO
             ));
 
-            when(pedidoClient.buscarPedidoPago()).thenReturn(pedidoList);
+            when(pedidoClient.buscarPedidosPagos()).thenReturn(pedidoList);
 
-            var resultado = pedidoService.buscarPedidoPago();
+            var resultado = pedidoService.buscarPedidosPagos();
 
             assertEquals(pedidoList, resultado);
 
-            verify(pedidoClient).buscarPedidoPago();
+            verify(pedidoClient).buscarPedidosPagos();
         }
 
         @Test
         void deveGerarExcecao_QuandoBuscarPedidoPago() {
-            when(pedidoClient.buscarPedidoPago()).thenReturn(List.of());
+            when(pedidoClient.buscarPedidosPagos()).thenReturn(List.of());
 
-            assertThatThrownBy(() -> pedidoService.buscarPedidoPago())
+            assertThatThrownBy(() -> pedidoService.buscarPedidosPagos())
                     .isInstanceOf(NaoEncontradoException.class)
                     .hasMessage(
                             String.format("Nenhum pedido com status:[%s]", StatusEnum.PAGO));
 
-            verify(pedidoClient).buscarPedidoPago();
+            verify(pedidoClient).buscarPedidosPagos();
         }
     }
 
@@ -84,11 +81,11 @@ public class PedidoServiceTest {
     class AtualizarPedidosAguardandoEntrega{
         @Test
         void deveAtualizarPedidosAguardandoEntrega(){
-            doNothing().when(pedidoClient).atualizarPedidosAguardandoEntrega(anyList());
+            doNothing().when(pedidoClient).atualizarPedidosAguardandoEntrega(any(AtualizarStatusLoteRequestVo.class));
 
             pedidoService.atualizarPedidosAguardandoEntrega(anyList());
 
-            verify(pedidoClient).atualizarPedidosAguardandoEntrega(anyList());
+            verify(pedidoClient).atualizarPedidosAguardandoEntrega(any(AtualizarStatusLoteRequestVo.class));
         }
     }
 

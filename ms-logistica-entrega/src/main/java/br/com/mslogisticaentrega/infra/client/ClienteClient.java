@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "ms-cadastrocliente", path = "/cliente", configuration = FeignConfig.class)
 public interface ClienteClient {
 
-    @GetMapping("buscar/{id}")
+    @GetMapping("/buscar/{id}")
     public ClienteVo obterClientePorId(@PathVariable Long id);
 }
