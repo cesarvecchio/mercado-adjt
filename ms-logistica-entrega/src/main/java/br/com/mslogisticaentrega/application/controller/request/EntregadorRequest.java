@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import br.com.mslogisticaentrega.domain.entity.EntregadorEntity;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class EntregadorRequest {
     private String nome;

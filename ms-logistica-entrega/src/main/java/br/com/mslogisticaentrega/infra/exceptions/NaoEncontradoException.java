@@ -5,7 +5,4 @@ public class NaoEncontradoException extends RuntimeException {
         super(message);
     }
 
-    public NaoEncontradoException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

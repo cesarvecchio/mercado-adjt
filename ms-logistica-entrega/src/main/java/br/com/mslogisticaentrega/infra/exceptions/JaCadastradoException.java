@@ -5,7 +5,4 @@ public class JaCadastradoException extends RuntimeException {
         super(message);
     }
 
-    public JaCadastradoException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

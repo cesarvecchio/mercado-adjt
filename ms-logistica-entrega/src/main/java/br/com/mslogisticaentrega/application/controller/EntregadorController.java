@@ -22,7 +22,7 @@ public class EntregadorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<EntregadorResponse>> buscarTOdos() {
+    public ResponseEntity<List<EntregadorResponse>> buscarTodos() {
 
         return ResponseEntity.ok(entregadorService.buscarTodos());
     }
