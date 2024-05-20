@@ -18,6 +18,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,20 +30,23 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+@EnableScheduling
 @Service
 public class ProdutoService {
 
-    private final Path fileStorageLocation;
+    //private final Path fileStorageLocation;
+
+    @Value("${file.storage.location}")
+    private String fileStorageLocation;
+
     private final JobLauncher jobLauncher;
     private final Job job;
     private final ProdutoRepository produtoRepository;
     private final Utils utils;
 
-    public ProdutoService(@Value("${file.upload-dir}") String fileUploadDir,
-                          @Qualifier("jobLauncherAsync") JobLauncher jobLauncher,
+    public ProdutoService(@Qualifier("jobLauncherAsync") JobLauncher jobLauncher,
                           Job job, ProdutoRepository produtoRepository,
                           Utils utils) {
-        this.fileStorageLocation = Paths.get(fileUploadDir);
         this.jobLauncher = jobLauncher;
         this.job = job;
         this.produtoRepository = produtoRepository;
@@ -50,38 +55,52 @@ public class ProdutoService {
 
     public void uploadProdutoFile(MultipartFile file) throws Exception {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        Path targetLocation = fileStorageLocation.resolve(fileName);
-        file.transferTo(targetLocation);
 
+        // Criar um arquivo temporário no diretório temporário do sistema
+        Path tempFile = Files.createTempFile("upload-", ".csv");
+
+        // Transferir o conteúdo do arquivo MultipartFile para o arquivo temporário
+        file.transferTo(tempFile.toFile());
+
+        // Criar os parâmetros do job
         JobParameters jobParameters = new JobParametersBuilder()
-                .addJobParameter("produtos", file.getOriginalFilename(), String.class, false)
-                .addJobParameter("produtosFile", "file:" + targetLocation, String.class)
+                .addString("produtos", fileName)
+                .addString("produtosFile", "file:" + tempFile.toString())
                 .toJobParameters();
 
+        // Executar o job
         jobLauncher.run(job, jobParameters);
     }
 
-//    @Scheduled(fixedRate = 30000)
+    //@Scheduled(fixedRate = 10000)
     public void processarProdutosAgendados() {
+        Path dirPath = Paths.get(fileStorageLocation);
+
+        if (!Files.exists(dirPath)) {
+            System.err.println("O diretório " + fileStorageLocation + " não existe.");
+            return;
+        }
+
         try {
-            Files.list(fileStorageLocation).forEach(filePath -> {
+            Files.list(dirPath).forEach(filePath -> {
                 JobParameters jobParameters = new JobParametersBuilder()
-                        .addJobParameter("produtosFile", "file:" + filePath, String.class, false)
+                        .addString("produtosFile", "file:" + filePath.toAbsolutePath().toString())
                         .addDate("date", new Date())
                         .toJobParameters();
-
 
                 try {
                     jobLauncher.run(job, jobParameters);
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    System.err.println("Erro ao executar o job: " + e.getMessage());
+                    e.printStackTrace();
                 }
             });
-
         } catch (IOException e) {
-            System.out.println("Erro ao processar arquivos agendados");
+            System.err.println("Erro ao listar arquivos no diretório: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+
 
     public ProdutoResponseDTO cadastrarProdutoIndividualmente(ProdutoRequestDTO produtoRequestDTO) {
         Produto produto = toEntity(produtoRequestDTO);
@@ -154,20 +173,20 @@ public class ProdutoService {
 
     public List<ConsultaBaixaEstoqueProdutoResponseDTO> montaRetorno(List<Produto> produtos,
                                                                      List<ProdutoPedidoRequestDTO> produtosDoPedido) {
-       List<ConsultaBaixaEstoqueProdutoResponseDTO> response = new ArrayList<>();
+        List<ConsultaBaixaEstoqueProdutoResponseDTO> response = new ArrayList<>();
         for (Produto produto : produtos) {
-           Optional<ProdutoPedidoRequestDTO> produtoDoPedido = produtosDoPedido
-                   .stream()
-                   .filter(prod -> Objects.equals(prod.idProduto(), produto.getId()))
-                   .findFirst();
-           if (produtoDoPedido.isPresent()) {
-               ConsultaBaixaEstoqueProdutoResponseDTO consultaBaixaEstoqueProdutoResponseDTO = new ConsultaBaixaEstoqueProdutoResponseDTO(produto.getId(),
-                       produto.getDescricao(),
-                       produtoDoPedido.get().quantidade(),
-                       produto.getValor());
-               response.add(consultaBaixaEstoqueProdutoResponseDTO);
-           }
-       }
+            Optional<ProdutoPedidoRequestDTO> produtoDoPedido = produtosDoPedido
+                    .stream()
+                    .filter(prod -> Objects.equals(prod.idProduto(), produto.getId()))
+                    .findFirst();
+            if (produtoDoPedido.isPresent()) {
+                ConsultaBaixaEstoqueProdutoResponseDTO consultaBaixaEstoqueProdutoResponseDTO = new ConsultaBaixaEstoqueProdutoResponseDTO(produto.getId(),
+                        produto.getDescricao(),
+                        produtoDoPedido.get().quantidade(),
+                        produto.getValor());
+                response.add(consultaBaixaEstoqueProdutoResponseDTO);
+            }
+        }
         return response;
     }
 }
