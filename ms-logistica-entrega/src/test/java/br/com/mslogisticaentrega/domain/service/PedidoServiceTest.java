@@ -49,9 +49,9 @@ public class PedidoServiceTest {
         @Test
         void deveBuscarPedidoPago() {
             List<PedidoVo> pedidoList = List.of(new PedidoVo(
-                    "1", 1,
+                    "1", 1L,
                     List.of(new ProdutoVo(1, "Pasta de Dente",
-                            BigDecimal.ONE, "Oral-B")),
+                            BigDecimal.ONE)),
                     BigDecimal.ONE, PagamentoEnum.PIX, StatusEnum.PAGO
             ));
 
@@ -93,16 +93,60 @@ public class PedidoServiceTest {
     class AtualizaPedidoEntregue{
         @Test
         void deveAtualizarPedidoEntregue(){
-            ClienteVo clienteVo = new ClienteVo(1L, "Teste", "11111111111",
-                    "40028922", "teste@gmail.com", null);
+            String idPedido = "664a6870d1f54475a57ed77a";
+            PedidoVo pedido = pedido();
+            ClienteVo cliente = cliente();
 
-            when(clienteService.obterClientePorId(anyLong())).thenReturn(clienteVo);
-            doNothing().when(emailService).sendEmail(any(Email.class));
+            doNothing().when(pedidoClient).atualizarPedidoEntregue(idPedido, StatusEnum.ENTREGUE);
+            when(pedidoClient.buscarPedido(idPedido)).thenReturn(pedido);
+            when(clienteService.obterClientePorId(pedido.idCliente())).thenReturn(cliente);
+            doNothing().when(emailService).sendEmail(
+                    new Email(cliente.email(),
+                            "Pedido Entregue",
+                            "Ah entrega do seu pedido foi realizada com sucesso!"));
 
-            pedidoService.atualizarPedidoEntregue(anyString());
+            pedidoService.atualizarPedidoEntregue(idPedido);
 
+            verify(pedidoClient).atualizarPedidoEntregue(anyString(), any(StatusEnum.class));
+            verify(pedidoClient).buscarPedido(anyString());
             verify(clienteService).obterClientePorId(anyLong());
-            verify(clienteService).obterClientePorId(anyLong());
+            verify(emailService).sendEmail(any(Email.class));
         }
+    }
+
+    private PedidoVo pedido(){
+        return new PedidoVo(
+                "664a6870d1f54475a57ed77a",
+                1L,
+                List.of(new ProdutoVo(
+                        1,
+                        "Produto",
+                        BigDecimal.ONE
+                )),
+                BigDecimal.ONE,
+                PagamentoEnum.PIX,
+                StatusEnum.ENTREGUE
+        );
+    }
+
+    private ClienteVo cliente(){
+        return new ClienteVo(
+                1L,
+                "Teste",
+                "11111111111",
+                "11111111",
+                "teste@gmail.com",
+                new EnderecoVo(
+                        "cep",
+                        "logradouro",
+                        "complemento",
+                        "bairro",
+                        "cidade",
+                        "uf",
+                        "numero",
+                        1.0,
+                        1.0
+                )
+        );
     }
 }

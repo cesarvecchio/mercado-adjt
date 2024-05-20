@@ -23,8 +23,8 @@ public class RelatorioService {
         StringBuilder relatorio = new StringBuilder("\n");
 
         for (PedidoClienteVo pedidoClienteVo : pedidoClienteList){
-            PedidoVo pedido = pedidoClienteVo.getPedido();
-            ClienteVo cliente = pedidoClienteVo.getCliente();
+            PedidoVo pedido = pedidoClienteVo.pedido();
+            ClienteVo cliente = pedidoClienteVo.cliente();
 
             relatorio.append(String.format("""
                             ========================================
@@ -39,10 +39,10 @@ public class RelatorioService {
                             
                             """,
                     fomatarClienteRelatorio(cliente),
-                    formatarProdutosRelatorio(pedido.getProdutos()),
-                    pedido.getValorTotal()));
+                    formatarProdutosRelatorio(pedido.produtos()),
+                    pedido.valorTotal()));
 
-            idPedidoList.add(pedido.getIdPedido());
+            idPedidoList.add(pedido.idPedido());
         }
 
         Email email = new Email(entregadorVo.getEmail(), "Pedidos a ser entregue", relatorio.toString());
@@ -56,11 +56,11 @@ public class RelatorioService {
         return String.format("""
                 Id: %d    |Nome Cliente: %s    |Cpf:%s    |Email:%s    |Cep:%s
                 """,
-                cliente.getId(),
-                cliente.getNome(),
-                cliente.getCpf(),
-                cliente.getEmail(),
-                cliente.getEndereco().getCep());
+                cliente.id(),
+                cliente.nome(),
+                cliente.cpf(),
+                cliente.email(),
+                cliente.endereco().cep());
     }
 
     private String formatarProdutosRelatorio(List<ProdutoVo> produtoVoList){
@@ -70,8 +70,8 @@ public class RelatorioService {
             relatorioPrdutos.append(String.format("""
                     Descricao: %s     Valor: R$%.2f
                     """,
-                    produtoVo.getDescricao(),
-                    produtoVo.getValor()));
+                    produtoVo.descricao(),
+                    produtoVo.valor()));
         }
 
         return relatorioPrdutos.toString();

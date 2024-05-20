@@ -49,9 +49,9 @@ public class PedidoService {
 
         PedidoVo pedidoVo = pedidoClient.buscarPedido(idPedido);
 
-        ClienteVo clienteVo = clienteService.obterClientePorId(pedidoVo.getIdCliente());
+        ClienteVo clienteVo = clienteService.obterClientePorId(pedidoVo.idCliente());
 
-        Email email = new Email(clienteVo.getEmail(), "Pedido Entregue", "Ah entrega do seu pedido foi realizada com sucesso!");
+        Email email = new Email(clienteVo.email(), "Pedido Entregue", "Ah entrega do seu pedido foi realizada com sucesso!");
 
         emailService.sendEmail(email);
     }
