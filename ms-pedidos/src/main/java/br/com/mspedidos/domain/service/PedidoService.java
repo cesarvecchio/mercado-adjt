@@ -10,7 +10,7 @@ import br.com.mspedidos.domain.entity.Pedido;
 import br.com.mspedidos.domain.enums.StatusEnum;
 import br.com.mspedidos.domain.valueobject.Produto;
 import br.com.mspedidos.infra.repository.PedidoRepository;
-import br.com.mspedidos.interfaces.StandardError;
+import br.com.mspedidos.application.controller.exceptions.StandardError;
 import br.com.mspedidos.interfaces.cliente.ClienteInterface;
 import br.com.mspedidos.interfaces.produto.ProdutoInterface;
 import br.com.mspedidos.interfaces.produto.response.ProdutoResponseDTO;
