@@ -11,6 +11,7 @@ import br.com.mslogisticaentrega.domain.valueObject.ClienteVo;
 import br.com.mslogisticaentrega.domain.valueObject.EnderecoVo;
 import br.com.mslogisticaentrega.domain.valueObject.PedidoVo;
 import br.com.mslogisticaentrega.domain.valueObject.ProdutoVo;
+import br.com.mslogisticaentrega.infra.exceptions.NaoEncontradoException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,7 @@ import org.mockito.MockitoAnnotations;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 public class LogisticaSchedulerTest {
@@ -48,26 +50,66 @@ public class LogisticaSchedulerTest {
 
     @Test
     void deveProcessarLogistica(){
-        PedidoVo pedidoVo = pedido();
-        ClienteVo cliente = cliente();
+        List<PedidoVo> pedidoVo = pedido();
+        List<ClienteVo> cliente = cliente();
         EntregadorResponse entregador = entregador();
 
-        when(pedidoService.buscarPedidosPagos()).thenReturn(List.of(pedidoVo));
-        when(clienteService.obterClientePorId(pedidoVo.idCliente())).thenReturn(cliente);
-        when(entregadorService.buscarTodos()).thenReturn(List.of(entregador));
+        when(pedidoService.buscarPedidosPagos()).thenReturn(pedidoVo);
+        when(clienteService.obterClientePorId(pedidoVo.get(0).idCliente())).thenReturn(cliente.get(0));
+        when(clienteService.obterClientePorId(pedidoVo.get(1).idCliente())).thenReturn(cliente.get(1));
+        when(clienteService.obterClientePorId(pedidoVo.get(2).idCliente())).thenReturn(cliente.get(2));
+        when(clienteService.obterClientePorId(pedidoVo.get(3).idCliente())).thenReturn(cliente.get(3));
+        when(entregadorService.buscarTodos()).thenReturn(List.of(entregador, entregador));
 
         logisticaScheduler.processarLogistica();
 
     }
 
-    private PedidoVo pedido(){
-        return new PedidoVo(
-                "664a6870d1f54475a57ed77a",
-                1L,
-                List.of(produto()),
-                BigDecimal.ONE,
-                PagamentoEnum.PIX,
-                StatusEnum.PAGO
+    @Test
+    void deveGerarExcecao_QuandoProcessarLogistica(){
+        doThrow(
+                new NaoEncontradoException(String.format("Nenhum pedido com status:[%s]",
+                        StatusEnum.PAGO)))
+                .when(pedidoService).buscarPedidosPagos();
+
+        logisticaScheduler.processarLogistica();
+
+    }
+
+    private List<PedidoVo> pedido(){
+        return List.of(
+                new PedidoVo(
+                        "664a6870d1f54475a57ed77a",
+                        1L,
+                        List.of(produto()),
+                        BigDecimal.ONE,
+                        PagamentoEnum.PIX,
+                        StatusEnum.PAGO
+                ),
+                new PedidoVo(
+                        "664a6870d1f54475a57ed77a",
+                        2L,
+                        List.of(produto()),
+                        BigDecimal.ONE,
+                        PagamentoEnum.PIX,
+                        StatusEnum.PAGO
+                ),
+                new PedidoVo(
+                        "664a6870d1f54475a57ed77a",
+                        3L,
+                        List.of(produto()),
+                        BigDecimal.ONE,
+                        PagamentoEnum.PIX,
+                        StatusEnum.PAGO
+                ),
+                new PedidoVo(
+                        "664a6870d1f54475a57ed77a",
+                        4L,
+                        List.of(produto()),
+                        BigDecimal.ONE,
+                        PagamentoEnum.PIX,
+                        StatusEnum.PAGO
+                )
         );
     }
 
@@ -79,23 +121,79 @@ public class LogisticaSchedulerTest {
         );
     }
 
-    private ClienteVo cliente(){
-        return new ClienteVo(
-                1L,
-                "Nome",
-                "11111111111",
-                "222222222",
-                "teste@gmail.com",
-                new EnderecoVo(
-                        "33333333",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        1.0,
-                        1.0
+    private List<ClienteVo> cliente(){
+        return List.of(
+                new ClienteVo(
+                        1L,
+                        "Nome",
+                        "11111111111",
+                        "222222222",
+                        "teste@gmail.com",
+                        new EnderecoVo(
+                                "11111111111",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                1.0,
+                                1.0
+                        )
+                ),
+                new ClienteVo(
+                        2L,
+                        "Nome",
+                        "11111111111",
+                        "222222222",
+                        "teste@gmail.com",
+                        new EnderecoVo(
+                                "22222222222",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                1.0,
+                                1.0
+                        )
+                ),
+                new ClienteVo(
+                        3L,
+                        "Nome",
+                        "11111111111",
+                        "33333333333",
+                        "teste@gmail.com",
+                        new EnderecoVo(
+                                "22222222222",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                1.0,
+                                1.0
+                        )
+                ),
+                new ClienteVo(
+                        4L,
+                        "Nome",
+                        "44444444444",
+                        "222222222",
+                        "teste@gmail.com",
+                        new EnderecoVo(
+                                "22222222222",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                "",
+                                1.0,
+                                1.0
+                        )
                 )
         );
     }

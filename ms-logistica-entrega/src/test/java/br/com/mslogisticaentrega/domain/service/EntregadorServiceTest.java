@@ -34,6 +34,7 @@ public class EntregadorServiceTest {
         autoCloseable = MockitoAnnotations.openMocks(this);
 
         entregadorService = new EntregadorService(entregadorRepository);
+        new EntregadorEntity();
     }
 
     @AfterEach

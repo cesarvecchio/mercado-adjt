@@ -68,7 +68,7 @@ class PedidoServiceTest {
     }
 
     @Nested
-    class criarPedido {
+    class CriarPedido {
 
         @Test
         void deveCriarPedido() throws JsonProcessingException {
@@ -176,7 +176,7 @@ class PedidoServiceTest {
     }
 
     @Nested
-    class efetuarPagamento {
+    class EfetuarPagamento {
 
         @Test
         void deveEfetuarPagamento() {
@@ -235,7 +235,7 @@ class PedidoServiceTest {
     }
 
     @Nested
-    class buscarPedido {
+    class BuscarPedido {
 
         @Test
         void deveBuscarPedido() {
@@ -298,7 +298,7 @@ class PedidoServiceTest {
     }
 
     @Nested
-    class atualizarStatusPedido {
+    class AtualizarStatusPedido {
 
         @Test
         void deveAtualizarStatusPedido() {

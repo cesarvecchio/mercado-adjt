@@ -3,13 +3,12 @@ package br.com.mslogisticaentrega.infra.client;
 import br.com.mslogisticaentrega.domain.enums.StatusEnum;
 import br.com.mslogisticaentrega.domain.valueObject.AtualizarStatusLoteRequestVo;
 import br.com.mslogisticaentrega.domain.valueObject.PedidoVo;
-import br.com.mslogisticaentrega.infra.config.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "ms-pedidos", configuration = FeignConfig.class, path = "/pedidos")
+@FeignClient(name = "ms-pedidos", path = "/pedidos")
 public interface PedidoClient {
     @GetMapping("/pagos")
     List<PedidoVo> buscarPedidosPagos();
