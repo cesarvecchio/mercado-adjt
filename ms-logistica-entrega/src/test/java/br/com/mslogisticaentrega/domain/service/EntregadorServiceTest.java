@@ -46,7 +46,7 @@ public class EntregadorServiceTest {
         @Test
         void deveBuscarTodosEntregadores(){
             List<EntregadorResponse> entregadoresLista = List.of(
-                    new EntregadorResponse(buildEntregadorEntity()));
+                    entregadorService.toResponse(buildEntregadorEntity()));
 
             when(entregadorRepository.findAll()).thenReturn(List.of(buildEntregadorEntity()));
 
@@ -60,7 +60,7 @@ public class EntregadorServiceTest {
         @Test
         void deveGerarExcecao_QuandoBuscarTodosEntregadores(){
             List<EntregadorResponse> entregadoresLista = List.of(
-                    new EntregadorResponse(buildEntregadorEntity()));
+                    entregadorService.toResponse(buildEntregadorEntity()));
 
             when(entregadorRepository.findAll()).thenReturn(List.of());
 
@@ -78,7 +78,7 @@ public class EntregadorServiceTest {
         void deveCriarEntregador(){
             var request = buildEntregadorRequest();
             var entity = buildEntregadorEntity();
-            var resposta = new EntregadorResponse(entity);
+            var resposta = entregadorService.toResponse(entity);
 
             when(entregadorRepository.existsByCpf(request.getCpf())).thenReturn(false);
             when(entregadorRepository.saveAndFlush(request.toEntity())).thenReturn(entity);
@@ -115,7 +115,7 @@ public class EntregadorServiceTest {
 
             var resultado = entregadorService.buscarPorId(entity.getId());
 
-            assertEquals(new EntregadorResponse(entity), resultado);
+            assertEquals(entregadorService.toResponse(entity), resultado);
 
             verify(entregadorRepository, times(1)).findById(entity.getId());
         }
@@ -153,7 +153,7 @@ public class EntregadorServiceTest {
 
             var resultado = entregadorService.atualizar(id, request);
 
-            assertEquals(new EntregadorResponse(entityAtualizada), resultado);
+            assertEquals(entregadorService.toResponse(entityAtualizada), resultado);
 
             verify(entregadorRepository, times(1)).findById(id);
             verify(entregadorRepository, times(1)).save(entityAtualizada);

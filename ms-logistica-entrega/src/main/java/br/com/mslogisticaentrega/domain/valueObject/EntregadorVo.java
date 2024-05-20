@@ -18,9 +18,9 @@ public class EntregadorVo {
     private List<PedidoClienteVo> pedidoClienteList;
 
     public EntregadorVo(EntregadorResponse entregadorResponse) {
-        this.id = entregadorResponse.getId();
-        this.nome = entregadorResponse.getNome();
-        this.cpf = entregadorResponse.getCpf();
-        this.email = entregadorResponse.getEmail();
+        this.id = entregadorResponse.id();
+        this.nome = entregadorResponse.nome();
+        this.cpf = entregadorResponse.cpf();
+        this.email = entregadorResponse.email();
     }
 }

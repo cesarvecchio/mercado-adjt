@@ -46,7 +46,7 @@ public class LogisticaScheduler {
             vincularPedidoCliente(pedidoClienteList, pedidoList);
 
             Map<String, List<PedidoClienteVo>> grupoPedidos =  pedidoClienteList.stream().collect(Collectors.groupingBy(pc -> {
-                return String.valueOf(pc.getCliente().getEndereco().getCep().toCharArray()[3]);
+                return String.valueOf(pc.cliente().endereco().cep().toCharArray()[3]);
             }));
 
             List<EntregadorResponse> entregadorList = entregadorService.buscarTodos();
@@ -72,7 +72,7 @@ public class LogisticaScheduler {
         logger.info("Iniciando Vinculacao de Pedidos aos Clientes");
 
         for(PedidoVo pedido : pedidoList) {
-            ClienteVo cliente = clienteService.obterClientePorId(pedido.getIdCliente());
+            ClienteVo cliente = clienteService.obterClientePorId(pedido.idCliente());
 
             pedidoClienteList.add(new PedidoClienteVo(pedido, cliente));
         }

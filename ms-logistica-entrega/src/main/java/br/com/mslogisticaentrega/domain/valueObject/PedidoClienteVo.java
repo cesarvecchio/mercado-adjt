@@ -1,13 +1,7 @@
 package br.com.mslogisticaentrega.domain.valueObject;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class PedidoClienteVo {
-    private PedidoVo pedido;
-    private ClienteVo cliente;
-}
+public record PedidoClienteVo (
+        PedidoVo pedido,
+        ClienteVo cliente
+    )
+{}

@@ -33,7 +33,7 @@ public class EntregadorService {
         }
 
         return entregadorEntityList.stream()
-                .map(EntregadorResponse::new)
+                .map(this::toResponse)
                 .toList();
     }
 
@@ -42,11 +42,11 @@ public class EntregadorService {
 
         EntregadorEntity entity = entregadorRepository.saveAndFlush(request.toEntity());
 
-        return new EntregadorResponse(entity);
+        return toResponse(entity);
     }
 
     public EntregadorResponse buscarPorId(Integer id) {
-        return new EntregadorResponse(validarPorId(id));
+        return toResponse(validarPorId(id));
     }
 
     public EntregadorResponse atualizar(Integer id, EntregadorRequest request) {
@@ -54,7 +54,7 @@ public class EntregadorService {
 
         Utils.copyNonNullProperties(request, entregador);
 
-        return new EntregadorResponse(entregadorRepository.save(entregador));
+        return toResponse(entregadorRepository.save(entregador));
     }
 
     public void deletar(Integer id) {
@@ -72,6 +72,15 @@ public class EntregadorService {
         if(entregadorRepository.existsByCpf(cpf)) {
             throw new JaCadastradoException(String.format("Entregador com cpf:[%s] ja esta cadastrado!", cpf));
         }
+    }
+
+    public EntregadorResponse toResponse(EntregadorEntity entregadorEntity){
+        return new EntregadorResponse(
+                entregadorEntity.getId(),
+                entregadorEntity.getNome(),
+                entregadorEntity.getCpf(),
+                entregadorEntity.getEmail()
+        );
     }
 
 }
