@@ -1,6 +1,6 @@
 package br.com.mspedidos.utils;
 
-import br.com.mspedidos.interfaces.StandardError;
+import br.com.mspedidos.application.controller.exceptions.StandardError;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

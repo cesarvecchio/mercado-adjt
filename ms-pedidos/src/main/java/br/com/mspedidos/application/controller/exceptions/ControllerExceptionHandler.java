@@ -1,6 +1,5 @@
 package br.com.mspedidos.application.controller.exceptions;
 
-import br.com.mspedidos.interfaces.StandardError;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

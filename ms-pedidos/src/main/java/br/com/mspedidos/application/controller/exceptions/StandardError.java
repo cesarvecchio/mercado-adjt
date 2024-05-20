@@ -1,4 +1,4 @@
-package br.com.mspedidos.interfaces;
+package br.com.mspedidos.application.controller.exceptions;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
