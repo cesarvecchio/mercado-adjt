@@ -54,6 +54,8 @@ dependencies {
 
 	testImplementation("io.qameta.allure:allure-junit5:2.23.0")
 	implementation("io.qameta.allure:allure-rest-assured:2.23.0")
+
+	testImplementation("com.h2database:h2")
 }
 
 tasks.withType<Test> {
