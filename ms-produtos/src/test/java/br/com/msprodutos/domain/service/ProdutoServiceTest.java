@@ -52,7 +52,7 @@ class ProdutoServiceTest {
     @BeforeEach
     void setup() {
         autoCloseable = MockitoAnnotations.openMocks(this);
-        produtoService = new ProdutoService("tmp", jobLauncher, job, produtoRepository, utils);
+        produtoService = new ProdutoService(jobLauncher, job, produtoRepository, utils);
     }
 
     @AfterEach
