@@ -1,0 +1,592 @@
+{
+	"info": {
+		"_postman_id": "7a1b00c1-b042-4194-ac6e-1d3bfaa96cf5",
+		"name": "MercadoAdjt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12369015"
+	},
+	"item": [
+		{
+			"name": "MsCliente",
+			"item": [
+				{
+					"name": "Obter Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/cliente",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Albert\",\r\n    \"cpf\": \"11111111111\",\r\n    \"telefone\": \"925503440\",\r\n    \"email\": \"albert@gmail.com\",\r\n    \"endereco\": {\r\n        \"cep\": \"08431370\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cliente/cadastrar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Cliente por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/cliente/buscar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"buscar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/cliente/deletar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"deletar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"endereco\": {\r\n        \"bairro\": \"Guaianases\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cliente/atualizar/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"atualizar",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MsProdutos",
+			"item": [
+				{
+					"name": "Cadastrar Produto Individualmente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Pasta de Dente\",\r\n    \"quantidadeEstoque\": 10,\r\n    \"valor\": 5.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/produtos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Produto Em Lote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"descricao\": \"Pasta de Dente\",\r\n        \"quantidadeEstoque\": 10,\r\n        \"valor\": 5.00\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/produtos/lote",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"lote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta E Da Baixa No Estoque",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"descricao\": \"Pasta de Dente\",\r\n        \"quantidadeEstoque\": 10,\r\n        \"valor\": 5.00\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/produtos/consulta-e-da-baixa-estoque",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"consulta-e-da-baixa-estoque"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Produtos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/produtos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza Produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Pasta de Dente\",\r\n    \"quantidadeEstoque\": 10,\r\n    \"valor\": 5.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/produtos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/produtos/upload",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MsPedido",
+			"item": [
+				{
+					"name": "Criar Pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"produtos\": [\r\n        { \r\n            \"idProduto\": 1, \r\n            \"quantidade\": 1\r\n        }\r\n    ],\r\n    \"formaPagamento\": \"PIX\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pedidos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Efetuar Pagamento Pedido",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pedidos/pagar/664c074710c6975c384255f9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"pagar",
+								"664c074710c6975c384255f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pedidos/664a6870d1f54475a57ed77a",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"664a6870d1f54475a57ed77a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Pedidos Pagos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pedidos/pagos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"pagos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Status Pedido",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/pedidos/atualizar-status/664a6870d1f54475a57ed77a?status=PAGO",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"atualizar-status",
+								"664a6870d1f54475a57ed77a"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "PAGO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Status Pedido Em Lote",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idsPedidos\": [ \"664a6870d1f54475a57ed77a\" ],\r\n    \"status\": \"PAGO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/pedidos/atualizar-status-em-lote",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"atualizar-status-em-lote"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MsLogisticaEntrega",
+			"item": [
+				{
+					"name": "Entregadores",
+					"item": [
+						{
+							"name": "Criar",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Jose\",\r\n    \"cpf\": \"22222222222\",\r\n    \"email\": \"jose@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/entregadores",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"entregadores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Por Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/entregadores/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"entregadores",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"jose2@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/entregadores/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"entregadores",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/entregadores/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"entregadores",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar Todos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/entregadores",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"entregadores"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Entrega",
+					"item": [
+						{
+							"name": "Atualizar Pedido Entregue",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/entregas/664c074710c6975c384255f9",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"entregas",
+										"664c074710c6975c384255f9"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
