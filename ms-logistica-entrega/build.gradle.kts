@@ -43,7 +43,7 @@ dependencies {
 
     //developmentOnly("org.springframework.boot:spring-boot-devtools")
 
-//    runtimeOnly("com.h2database:h2")
+    runtimeOnly("com.h2database:h2")
     runtimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -59,6 +59,25 @@ dependencies {
 
 
 }
+
+//tasks.withType<Test> {
+//    useJUnitPlatform()
+//    testLogging {
+//        events("passed", "skipped", "failed")
+//    }
+//}
+//
+//tasks.register<Test>("unitTest") {
+//    filter {
+//        includeTestsMatching("br.com.mslogisticaentrega.*Test")
+//    }
+//}
+//
+//tasks.register<Test>("integrationTest") {
+//    filter {
+//        includeTestsMatching("br.com.mslogisticaentrega.*IT")
+//    }
+//}
 
 tasks.withType<Test> {
     useJUnitPlatform()

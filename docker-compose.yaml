@@ -10,12 +10,13 @@ services:
     environment:
       - POSTGRES_PASSWORD=""
       - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_DB=mercado_db
     ports:
       - "5432:5432"
     networks:
       - mercado-network
 
-  mongodb-restaurante:
+  mongodb-pedido:
     image: "mongo"
     container_name: "mongodb-pedido"
     ports:
@@ -23,39 +24,60 @@ services:
     networks:
       - mercado-network
 
-    app:
-      build: .
-      ports:
-        - "8081:8081"
-      depends_on:
-        - db
-      environment:
-        SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
-        SPRING_DATASOURCE_USERNAME: postgres
-        SPRING_DATASOURCE_PASSWORD: password
-        SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
-        SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
-        SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
-      networks:
-        - mercado-network
 
 
 
-      
 
-  # ms-logistica-entrega:
-  #   image: "backend:dev"
-  #   build:
-  #     context: .
-  #   container_name: "ms-logistica-entrega"
-  #   depends_on:
-  #     - banco-mercado
-  #   ports:
-  #     - "8084:8084"
-  #     - "587:587"
-  #   environment:
-  #     POSTGRES_URI: banco-mercado
-  #     MS_PEDIDOS_URI: localhost
-  #     MS_CLIENTE_URI: localhost
-  #   networks:
-  #     - mercado-network
+  ms-cliente:
+    container_name: "ms-cliente"
+    build: ./ms-cliente
+    ports:
+      - "8081:8081"
+    depends_on:
+      - banco-mercado
+    environment:
+      SPRING_DATASOURCE_URL: banco-mercado
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+    networks:
+      - mercado-network
+
+  ms-produto:
+    container_name: "ms-produto"
+    build: ./ms-produtos
+    ports: 
+      - "8082:8082"
+    depends_on:
+      - banco-mercado
+    environment:
+      SPRING_DATASOURCE_URL: banco-mercado
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+    networks:
+      - mercado-network
+
+  ms-pedidos:
+    container_name: "ms-pedidos"
+    build: ./ms-pedidos
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mongodb-pedido
+    environment:
+      MONGO_URI: mongodb://mongodb-pedido:27017/restaurante?authSource=admin
+    networks:
+      - mercado-network
+
+  ms-logistica-entrega:
+    container_name: "ms-logistica-entrega"
+    build:
+      context: ./ms-logistica-entrega
+    ports:
+      - "8084:8084"
+      - "587:587"
+    depends_on:
+      - banco-mercado
+    environment:
+      POSTGRES_URI: banco-mercado
+      MS_PEDIDOS_URI: ms-pedidos
+      MS_CLIENTE_URI: ms-cliente
+    networks:
+      - mercado-network

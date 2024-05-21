@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(value = "produto", url="http://localhost:8082/produtos")
+@FeignClient(name = "ms-produto", path="/produtos")
 public interface ProdutoInterface {
 
     @PostMapping("/consulta-e-da-baixa-estoque")

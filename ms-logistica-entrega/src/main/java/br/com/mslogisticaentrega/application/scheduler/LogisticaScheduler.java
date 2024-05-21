@@ -34,8 +34,7 @@ public class LogisticaScheduler {
         this.relatorioService = relatorioService;
     }
 
-//    @Scheduled(initialDelay = 1000, fixedDelay = 300000)
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(initialDelay = 1000, fixedDelay = 120000)
     public void processarLogistica() {
         try {
             logger.info("==== Processo de Logistica Iniciado =====");
