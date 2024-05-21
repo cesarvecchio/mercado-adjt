@@ -22,12 +22,16 @@ public class ConfigGateway {
         return builder.routes()
                 .route("cliente", r -> r.path("/cliente/**")
                         .uri(msClienteUrl))
+
                 .route("produtos", r -> r.path("/produtos/**")
                         .uri(msProdutosUrl))
+
                 .route("pedidos", r -> r.path("/pedidos/**")
-                        .uri("http://localhost:8083"))
-                .route("entrega", r -> r.path("/entregas/**")
                         .uri(msPedidosUrl))
+
+                .route("entrega", r -> r.path("/entregas/**")
+                        .uri(msLogisticaEntregaUrl))
+
                 .route("entrega", r -> r.path("/entregadores/**")
                         .uri(msLogisticaEntregaUrl))
                 .build();
