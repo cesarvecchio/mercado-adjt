@@ -24,6 +24,19 @@ services:
       - "27017:27017"
     networks:
       - mercado-network
+  
+  gateway:
+    container_name: "gateway"
+    build: ./gateway
+    ports: 
+      - "8080:8080"
+    environment:
+      MS_CLIENTE_URI: ms-cliente
+      MS_PRODUTOS_URI: ms-produto
+      MS_PEDIDOS_URI: ms-pedidos
+      MS_LOGISTICA_ENTREGA_URI: ms-logistica-entrega
+    networks:
+      - mercado-network
 
   ms-cliente:
     container_name: "ms-cliente"
