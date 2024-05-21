@@ -23,7 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.Resource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -56,18 +57,24 @@ public class BatchConfiguration {
                 .reader(itemReader)
                 .processor(itemProcessor)
                 .writer(itemWriter)
+                .taskExecutor(new SimpleAsyncTaskExecutor())
                 .build();
     }
 
     @StepScope
     @Bean
-    public FlatFileItemReader<Produto> itemReader(@Value("#{jobParameters['produtosFile']}") Resource resource) {
+    public FlatFileItemReader<Produto> itemReader(@Value("#{jobParameters['produtosFile']}") String filePath) {
         BeanWrapperFieldSetMapper<Produto> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(Produto.class);
 
+        // Remove o prefixo "file:" do caminho do arquivo
+        if (filePath.startsWith("file:")) {
+            filePath = filePath.substring(5);
+        }
+
         return new FlatFileItemReaderBuilder<Produto>()
                 .name("produtoItemReader")
-                .resource(resource)
+                .resource(new FileSystemResource(filePath))
                 .delimited()
                 .names("id", "descricao", "quantidadeEstoque", "valor")
                 .fieldSetMapper(fieldSetMapper)
