@@ -79,8 +79,12 @@ services:
       - "8083:8083"
     depends_on:
       - mongodb-pedido
+      - ms-cliente
+      - ms-produto
     environment:
-      MONGO_URI: mongodb://mongodb-pedido:27017/restaurante?authSource=admin
+      MONGO_URI: mongodb://mongodb-pedido:27017/pedido?authSource=admin
+      MS_CLIENTE_URI: ms-cliente
+      MS_PRODUTO_URI: ms-produto
     networks:
       - mercado-network
 
@@ -93,6 +97,8 @@ services:
       - "587:587"
     depends_on:
       - banco-mercado
+      - ms-pedidos
+      - ms-cliente
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://banco-mercado:5432/mercado_db
       SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop

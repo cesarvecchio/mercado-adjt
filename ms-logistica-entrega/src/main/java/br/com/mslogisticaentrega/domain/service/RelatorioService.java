@@ -32,6 +32,7 @@ public class RelatorioService {
                             %s
                                 
                             Pedidos
+                            ID: %s
                             %s
                                 
                                  Valor total: R$%.2f
@@ -39,6 +40,7 @@ public class RelatorioService {
                             
                             """,
                     fomatarClienteRelatorio(cliente),
+                    pedido.idPedido(),
                     formatarProdutosRelatorio(pedido.produtos()),
                     pedido.valorTotal()));
 
