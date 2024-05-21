@@ -1,0 +1,38 @@
+version: "3.9"
+
+networks:
+  produtos-network:
+
+services:
+  app:
+    build: .
+    ports:
+      - "8082:8082"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/produtos
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+      SPRING_BATCH_JDBC_INITIALIZE-SCHEMA: always
+      SPRING_SQL_INIT_MODE: always
+      FILE_STORAGE_LOCATION: /app/resources/data
+      SPRING_BATCH_JOB_ENABLED: false
+    volumes:
+        - ./src/main/resources/data:/app/resources/data
+    networks:
+      - produtos-network
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: produtos
+    networks:
+      - produtos-network

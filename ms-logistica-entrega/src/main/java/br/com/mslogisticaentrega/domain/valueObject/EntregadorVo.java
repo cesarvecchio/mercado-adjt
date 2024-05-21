@@ -3,12 +3,10 @@ package br.com.mslogisticaentrega.domain.valueObject;
 import br.com.mslogisticaentrega.application.controller.response.EntregadorResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class EntregadorVo {
     private Integer id;
