@@ -20,6 +20,10 @@ configurations {
     }
 }
 
+val cucumberRuntime: Configuration by configurations.creating {
+    extendsFrom(configurations["testImplementation"])
+}
+
 repositories {
     mavenCentral()
 }
@@ -58,36 +62,36 @@ dependencies {
 
 }
 
-
-
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-/*
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "17"
-    destinationDir = file("$buildDir/target")
-}
-
-tasks {
-    jar {
-        dependsOn("compileTestKotlin")
+    testLogging {
+        events("passed", "skipped", "failed")
     }
 }
 
-tasks.jar {
-    dependsOn("compileTestKotlin")
+tasks.register<Test>("unitTest") {
+    filter {
+        includeTestsMatching("br.com.cadastrocliente.mscadastrocliente.*Test")
+    }
 }
 
-tasks.inspectClassesForKotlinIC {
-    dependsOn("compileTestKotlin")
+tasks.register<Test>("integrationTest") {
+    filter {
+        includeTestsMatching("br.com.cadastrocliente.mscadastrocliente.*IT")
+    }
 }
 
-tasks.bootJar {
-    dependsOn("compileTestKotlin")
+tasks.register("cucumberCli") {
+    dependsOn("assemble", "testClasses")
+    doLast {
+        javaexec {
+            mainClass.set("io.cucumber.core.cli.Main")
+            classpath = cucumberRuntime + sourceSets.main.get().output + sourceSets.test.get().output
+            args = listOf(
+                    "--plugin", "pretty",
+                    "--plugin", "html:build/cucumber-reports/cucumber.html",
+                    "--glue", "br.com.cadastrocliente.mscadastrocliente.bdd",
+                    "src/test/resources")
+        }
+    }
 }
-
-tasks.resolveMainClassName {
-    dependsOn("compileTestKotlin")
-}*/

@@ -60,25 +60,36 @@ dependencies {
 
 }
 
-//tasks.withType<Test> {
-//    useJUnitPlatform()
-//    testLogging {
-//        events("passed", "skipped", "failed")
-//    }
-//}
-//
-//tasks.register<Test>("unitTest") {
-//    filter {
-//        includeTestsMatching("br.com.mslogisticaentrega.*Test")
-//    }
-//}
-//
-//tasks.register<Test>("integrationTest") {
-//    filter {
-//        includeTestsMatching("br.com.mslogisticaentrega.*IT")
-//    }
-//}
-
 tasks.withType<Test> {
     useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+}
+
+tasks.register<Test>("unitTest") {
+    filter {
+        includeTestsMatching("br.com.mslogisticaentrega.*Test")
+    }
+}
+
+tasks.register<Test>("integrationTest") {
+    filter {
+        includeTestsMatching("br.com.mslogisticaentrega.*IT")
+    }
+}
+
+tasks.register("cucumberCli") {
+    dependsOn("assemble", "testClasses")
+    doLast {
+        javaexec {
+            mainClass.set("io.cucumber.core.cli.Main")
+            classpath = cucumberRuntime + sourceSets.main.get().output + sourceSets.test.get().output
+            args = listOf(
+                    "--plugin", "pretty",
+                    "--plugin", "html:build/cucumber-reports/cucumber.html",
+                    "--glue", "br.com.mslogisticaentrega.bdd",
+                    "src/test/resources")
+        }
+    }
 }
