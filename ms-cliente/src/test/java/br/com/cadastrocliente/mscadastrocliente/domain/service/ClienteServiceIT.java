@@ -751,7 +751,7 @@ public class ClienteServiceIT {
         @Test
 
         void deveGerarExcessaoQuandoNaoEncontrado() {
-            var idNaoExiste = 10L;
+            var idNaoExiste = Long.MAX_VALUE;
 
             // Act
             assertThatThrownBy(() -> clienteService.deletarCliente(idNaoExiste))

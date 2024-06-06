@@ -435,7 +435,7 @@ public class ClienteControllerIT {
 
         @Test
         void deveGerarExcessaoQuandoIdNaoEncontrado() throws Exception {
-            var id = 6L;
+            var id = Long.MAX_VALUE;
 
             given()
                     .filter(new AllureRestAssured())
